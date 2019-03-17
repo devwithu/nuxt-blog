@@ -6,7 +6,7 @@
     <section class="featured-posts">
       <nuxt-link :to="'/posts/' + 1">
         <article class="post-preview">
-          <div class="post-thumnail" style="background-image: url('http://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2018/11/tech-regulation.jpg?resize=1500%2C0&quality=82&strip=all&ssl=1')"></div>
+          <div class="post-thumbnail" style="background-image: url('https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg')"></div>
           <div class="post-content">
             <h1>Post Title</h1>
             <p>Preview Text</p>
