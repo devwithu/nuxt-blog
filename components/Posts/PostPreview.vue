@@ -1,39 +1,42 @@
 <template>
-  <div class="home-page">
-    <section class="intro">
-      <h1>Get the latest tech news!</h1>
-    </section>
-    <section class="featured-posts">
-      <PostPreview 
-        id="1"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-      <PostPreview 
-        id="2"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-      <PostPreview 
-        id="3"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-    </section>
-  </div>
+    <nuxt-link :to="'/posts/' + id">
+    <article class="post-preview">
+        <div class="post-thumbnail" 
+        :style="{backgroundImage: 'url(' + thumbnail +')'}"></div>
+        <div class="post-content">
+        <h1>{{ title }}</h1>
+        <p>{{ previewText }}</p>
+        </div>
+    </article>
+    </nuxt-link>     
 </template>
 
 <script>
-import PostPreview from '@/components/Posts/PostPreview'
-
 export default {
-  components: {
-    PostPreview
+  name: 'PostPreview',
+  props: {
+      id: {
+          type: String,
+          required: true
+      },
+      title: {
+          type: String,
+          required: true
+      },
+      previewText: {
+          type: String,
+          required: true
+      },
+      thumbnail: {
+          type: String,
+          required: true
+      }
   }
 }
 </script>
 
-<style>
+
+<style scoped>
 .intro {
   height: 300px;
   position: relative;
@@ -109,3 +112,4 @@ a:active .post-content {
   background-color: #ccc;
 }
 </style>
+
