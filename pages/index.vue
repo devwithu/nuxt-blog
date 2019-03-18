@@ -3,32 +3,18 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <section class="featured-posts">
-      <PostPreview 
-        id="1"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-      <PostPreview 
-        id="2"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-      <PostPreview 
-        id="3"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-    </section>
+
+    <PostList />
+
   </div>
 </template>
 
 <script>
-import PostPreview from '@/components/Posts/PostPreview'
+import PostList from '@/components/Posts/PostList'
 
 export default {
   components: {
-    PostPreview
+    PostList
   }
 }
 </script>
