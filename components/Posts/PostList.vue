@@ -1,23 +1,12 @@
 <template>
     <section class="post-list">
       <PostPreview 
-        id="1"
+        v-for="post in posts" :key="post.id"
+        :id="post.id"
         :is-admin="isAdmin"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-      <PostPreview 
-        id="2"
-        :is-admin="isAdmin"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
-      <PostPreview 
-        id="3"
-        :is-admin="isAdmin"
-        thumbnail="https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg"
-        title="Hello there!"
-        previewText="This my first post!" /> 
+        :thumbnail="post.thumbnail"
+        :title="post.title"
+        :previewText="post.previewText" /> 
     </section>
 </template>
 
@@ -32,6 +21,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }
