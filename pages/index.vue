@@ -16,29 +16,17 @@ export default {
   components: {
     PostList
   },
-  asyncData(context, callback) {
-    console.log('asyncData is executed')
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-          { id: '1', title: 'First Post', previewText: 'This tis our first psot!',
-            thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' },
-          { id: '2', title: 'First2 Post', previewText: 'This tis our first psot!',
-            thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' },
-          { id: '3', title: 'First3 Post', previewText: 'This tis our first psot!',
-            thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' }
-        ]
-      })
-    },1500)
-  },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
+  }
   // data() {
   //   return {
   //     loadedPosts: []
   //   }
   // },
-  created() {
 
-  }
 }
 </script>
 
