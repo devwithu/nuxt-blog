@@ -11,21 +11,29 @@ export default {
   components: {
     PostList
   },
-  asyncData(context, callback) {
-    console.log('asyncData is executed');
-    console.log(context);
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-          { id: '1', title: 'First Post', previewText: 'This tis our first psot!',
-            thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' },
-          { id: '2', title: 'First2 Post', previewText: 'This tis our first psot!',
-            thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' },
-          { id: '3', title: 'First3 Post', previewText: 'This tis our first psot!',
-            thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' }
-        ]
-      })
-    },1500)
+  asyncData(context) {
+    //console.log(context);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          loadedPosts: [
+            { id: '1', title: 'First Post', previewText: 'This tis our first psot!',
+              thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' },
+            { id: '2', title: 'First2 Post', previewText: 'This tis our first psot!',
+              thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' },
+            { id: '3', title: 'First3 Post', previewText: 'This tis our first psot!',
+              thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' }
+          ]
+        })
+      },1500)      
+    })
+    .then( data => {
+      return data
+    })
+    .catch( e => {
+      context.error(new Error());
+    })
+
   },  
 }
 </script>
