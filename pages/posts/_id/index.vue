@@ -3,7 +3,7 @@
     <section class="post">
       <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated on {{ loadedPost.updateDate }}</div>
+        <div class="post-detail">Last updated on {{ loadedPost.updatedDate }}</div>
         <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
       <p class="post-content">{{ loadedPost.content }}</p>
@@ -15,22 +15,17 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  asyncData(context, callback) {
-    console.log(context);
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: { 
-          id: '1', 
-          title: 'First Post (ID:' + context.route.params.id + ')', 
-          previewText: 'This tis our first psot!',
-          author: 'Maximilian',
-          updateDate: new Date(),
-          content: 'Some dummy text',
-          thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg' 
-          }
+  asyncData(context) {
+    return axios.get('https://nestjsandfirebase.firebaseio.com/posts/' + context.params.id + '.json')
+      .then(res => {
+        return {
+          loadedPost: res.data
+        }
       })
-    },1000)
+      .catch(e => context.error(e));
   },  
 }
 </script>

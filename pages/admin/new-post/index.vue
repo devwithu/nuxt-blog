@@ -17,9 +17,12 @@ export default {
   },
   methods: {
     onSubmitted(postData) {
-      axios.post('https://nestjsandfirebase.firebaseio.com/posts.json', postData)
+      axios.post('https://nestjsandfirebase.firebaseio.com/posts.json', { 
+        ...postData, 
+        updatedDate: new Date()
+        })
         .then(result => console.log(result))
-        .catch(e => console.log(e))
+        .catch(e => console.log(e));
     }
   }
 }
