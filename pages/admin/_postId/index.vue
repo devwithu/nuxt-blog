@@ -1,12 +1,13 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost" />
+      <AdminPostForm :post="loadedPost" @submit="onSubmitted" />
     </section>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import AdminPostForm from '@/components/Admin/AdminPostForm'
 
 export default {
@@ -14,14 +15,25 @@ export default {
   components: {
     AdminPostForm
   },
-  data() {
-    return {
-      loadedPost: {
-        author: 'Maximilia',
-        title: 'My awesome Post',
-        content: 'Super',
-        thumbnail: 'https://static.coindesk.com/wp-content/uploads/2018/11/shutterstock_1098423464.jpg'
-      }
+  asyncData(context) {
+    return axios.get('https://nestjsandfirebase.firebaseio.com/posts/' + context.params.id + '.json')
+      .then(res => {
+        return {
+          loadedPost: res.data
+        }
+      })
+      .catch(e => context.error(e));
+  },  
+  methods: {
+    onSubmitted(editedPost) {
+      axios.put('https://nestjsandfirebase.firebaseio.com/' +
+        this.$route.params.postId + 
+        '.json', editedPost)
+        .then(res => {
+          this.$router.push('/admin')
+        })
+        .catch(e => console.log(e));
+
     }
   }
 }
