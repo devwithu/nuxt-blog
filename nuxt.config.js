@@ -47,8 +47,12 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
+  modules: [ 
+    '@nuxtjs/axios',
   ],
+  // axios: {
+  //   baseUrl: process.env.BASE_URL || 'https://nestjsandfirebase.firebaseio.com'
+  // },
 
   /*
   ** Build configuration
@@ -62,7 +66,8 @@ module.exports = {
     }
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://nestjsandfirebase.firebaseio.com'
+    baseUrl: process.env.BASE_URL || 'https://nestjsandfirebase.firebaseio.com',
+    credentials: false
   },
   // router: {
   //   linkActiveClass: 'active'
