@@ -67,7 +67,8 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'https://nestjsandfirebase.firebaseio.com',
-    credentials: false
+    credentials: false,
+    fbAPIKey: 'AIzaSyAMvE6h4X7PAS_m5xoriqxMZ05Cbhi7VcM'
   },
   // router: {
   //   linkActiveClass: 'active'
