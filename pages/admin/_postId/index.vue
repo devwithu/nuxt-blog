@@ -16,7 +16,7 @@ export default {
     AdminPostForm
   },
   asyncData(context) {
-    return axios.get('https://nestjsandfirebase.firebaseio.com/posts/' + context.params.id + '.json')
+    return axios.get('https://nestjsandfirebase.firebaseio.com/posts/' + context.params.postId + '.json')
       .then(res => {
         return {
           loadedPost: {...res.data, id: context.params.postId}

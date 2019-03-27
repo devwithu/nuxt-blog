@@ -41,7 +41,7 @@ const createStore = () => {
                     ...post,
                     updatedDatee: new Date()
                 }
-                axios.post('https://nestjsandfirebase.firebaseio.com/posts.json',createdPost)
+                axios.post('https://nestjsandfirebase.firebaseio.com/posts.json?auth=' + vuexContext.state.token,createdPost)
                     .then(result =>  {
                         vuexContext.commit('addPost', {...createdPost, id: result.data.name})
                     })
@@ -50,7 +50,7 @@ const createStore = () => {
             editPost(vuexContext, editedPost) {
                 return axios.put('https://nestjsandfirebase.firebaseio.com/' +
                 editedPost.id + 
-                '.json', editedPost)
+                '.json?auth=' + vuexContext.state.token, editedPost)
                 .then(res => {
                     vuexContext.commit('editPost', editedPost)
                 })
