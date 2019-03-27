@@ -60,5 +60,8 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'https://nestjsandfirebase.firebaseio.com'
-  }
+  },
+  // router: {
+  //   linkActiveClass: 'active'
+  // }
 }
