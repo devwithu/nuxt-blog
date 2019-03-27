@@ -57,5 +57,8 @@ module.exports = {
     extend(config, ctx) {
       
     }
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://nestjsandfirebase.firebaseio.com'
   }
 }
