@@ -33,6 +33,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~assets/styles/main.css'
   ],
 
   /*
@@ -63,5 +64,10 @@ module.exports = {
   },
   // router: {
   //   linkActiveClass: 'active'
-  // }
+  // },
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
+  }
+
 }
