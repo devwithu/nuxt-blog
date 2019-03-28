@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const bodyparser = require('body-parser')
 
 
 module.exports = {
@@ -79,6 +80,10 @@ module.exports = {
   },
   router: {
     middleware: 'log'
-  }
+  },
+  serveerMiddleware: [
+    bodyparser.json(),
+    '~/api'
+  ]
 
 }
